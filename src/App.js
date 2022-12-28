@@ -1,8 +1,14 @@
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from './components/NewExpense/NewExpense';
+import ExpensesFilter from "./components/Expenses/ExpensesFilter";
+import {useState} from "react";
 
 
 function App() {
+
+  const [filteredYear, setFilteredYear]=useState('');
+  console.log("Filtered Year", filteredYear)
+
   const expenses = [
     {
       id: 'e1',
@@ -28,9 +34,22 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const onSaveHandler=(enteredData)=>{
+    console.log("In APP.js");
+    console.log(enteredData);
+  }
+
+  const selectedFilteredYear=(selectedOption)=>{
+      setFilteredYear(selectedOption);
+  }
+  
+
+
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onSaveNewExp={onSaveHandler}/>
+      <ExpensesFilter filteredYear={selectedFilteredYear} />
       <Expenses item={expenses[0]} />
       <Expenses item={expenses[1]} />
       <Expenses item={expenses[2]} />
