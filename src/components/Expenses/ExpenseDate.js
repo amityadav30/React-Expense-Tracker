@@ -1,6 +1,7 @@
 import './ExpenseDate.css';
 
 function ExpenseDate(props){
+    console.log("IN ExpDate",props.date )
     return(
 <div className='expense-date'>
         <div className='expense-date__month'>{props.date.toLocaleString('en-US',{month:'long'})}</div>
